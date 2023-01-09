@@ -6,9 +6,9 @@ from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delays: int) -> List[float]:
-    """returns list of delayss"""
-    delays = await asyncio.gather(*(wait_random(max_delays) for _ in range(n)))
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    """returns list of delays"""
+    delays = await asyncio.gather(*(wait_random(max_delay) for _ in range(n)))
     for i in range(1, len(delays)):
         key = delays[i]
         j = i - 1
