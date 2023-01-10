@@ -8,5 +8,6 @@ import random
 async def async_generator() -> List[float]:
     """yields a random number for each iteration"""
     for _ in range(10):
-        yield random.random()
         await asyncio.sleep(1)
+        yield random.random()
+
