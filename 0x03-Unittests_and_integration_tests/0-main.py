@@ -1,8 +1,13 @@
-#!/usr/bin/env python3
+import requests
+from datetime import datetime
 
-from utils import access_nested_map
-from typing import Mapping
+def is_weekday():
+    today = datetime.today()
+    # Python's datetime library treats Monday as 0 and Sunday as 6
+    return (0 <= today.weekday() < 5)
 
-nested_map = {"i": {"h": {}}}
-access_nested_map(nested_map, ["i", "h", "k"])
-print(isinstance(nested_map, Mapping))
+def get_holidays():
+    r = requests.get('http://localhost/api/holidays')
+    if r.status_code == 200:
+        return r.json()
+    return None
