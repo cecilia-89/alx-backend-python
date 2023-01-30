@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Module: test client.py file"""
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
-
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -21,3 +20,13 @@ class TestGithubOrgClient(unittest.TestCase):
         url = GithubOrgClient.ORG_URL.format(org=org)
         mock_get_json(url)
         mock_get_json.assert_called_once_with(url)
+
+    def test_public_repos_url(self):
+        """test the public_repos function"""
+
+        with patch.object(
+                        GithubOrgClient,
+                        'org',
+                        new_callable=PropertyMock) as mock_org:
+            mock_org.return_value = True
+
