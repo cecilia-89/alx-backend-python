@@ -2,6 +2,5 @@
 
 from client import GithubOrgClient
 
-github = GithubOrgClient('pinterest')
-for repo in github.repos_payload:
-    print(repo["name"])
+github = GithubOrgClient('google')
+github.has_license({"license": {"key": "my_license"}}, "my_license")
