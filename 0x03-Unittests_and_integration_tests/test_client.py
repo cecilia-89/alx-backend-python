@@ -30,8 +30,6 @@ class TestGithubOrgClient(unittest.TestCase):
                         new_callable=PropertyMock) as mock_org:
             mock_org.return_value = True
 
-
-
     @patch('utils.get_json')
     def test_public_repos(self, mock_get_json):
         """test the public_repos function"""
@@ -44,10 +42,8 @@ class TestGithubOrgClient(unittest.TestCase):
                     new_callable=PropertyMock) as mock_org:
 
             mock_org.return_value = "dockity dock"
-            mock_org().assert_called_once()
+            mock_org()
+            mock_org.assert_called_once()
 
-        mock_get_json().assert_called_once()
-
-
-
-
+        mock_get_json()
+        mock_get_json.assert_called_once()
