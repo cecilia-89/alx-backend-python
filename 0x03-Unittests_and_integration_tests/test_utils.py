@@ -65,5 +65,3 @@ class TestMemoize(unittest.TestCase):
             test_class.a_property()
             test_class.a_property()
             mock_a_method.assert_called_once()
-
-
