@@ -1,13 +1,7 @@
-import requests
-from datetime import datetime
+#!/usr/bin/env python3
 
-def is_weekday():
-    today = datetime.today()
-    # Python's datetime library treats Monday as 0 and Sunday as 6
-    return (0 <= today.weekday() < 5)
+from client import GithubOrgClient
 
-def get_holidays():
-    r = requests.get('http://localhost/api/holidays')
-    if r.status_code == 200:
-        return r.json()
-    return None
+github = GithubOrgClient('pinterest')
+for repo in github.repos_payload:
+    print(repo["name"])
