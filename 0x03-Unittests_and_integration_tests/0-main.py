@@ -3,4 +3,4 @@
 from client import GithubOrgClient
 
 github = GithubOrgClient('google')
-github.has_license({"license": {"key": "my_license"}}, "my_license")
+print(github.has_license({"license": {"key": "my_license"}}, "my_license"))
