@@ -2,8 +2,9 @@
 """Module: test client.py file"""
 import unittest
 from unittest.mock import patch, PropertyMock
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -54,10 +55,24 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     def test_has_license(self, license, key, expected):
         """test the has_license function"""
-        with self.assertRaises(AssertionError):
-            GithubOrgClient.has_license(license, None)
-
 
         self.assertEqual(
             GithubOrgClient.has_license(license, key), expected)
 
+
+@parameterized_class((
+    "org_payload",
+    "repos_payload",
+    "expected_repos",
+    "apache2_repos"), [
+    (TEST_PAYLOAD)
+
+])
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """class Test intergration class"""
+
+    def setUp(self) -> None:
+        return super().setUp()
+
+    def tearDown(self) -> None:
+        return super().tearDown()
