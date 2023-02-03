@@ -56,8 +56,10 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_has_license(self, license, key, expected):
         """test the has_license function"""
 
-        self.assertEqual(
-            GithubOrgClient.has_license(license, key), expected)
+
+        test_instance = GithubOrgClient('holberton')
+        license_available = test_instance.has_license(license, key)
+        self.assertEqual(license_available, expected)
 
 
 @parameterized_class((
