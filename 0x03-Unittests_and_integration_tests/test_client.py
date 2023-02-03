@@ -72,7 +72,9 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     """class Test intergration class"""
 
     def setUp(self) -> None:
+        """sets uu func"""
         return super().setUp()
 
     def tearDown(self) -> None:
+        """teardown func"""
         return super().tearDown()
